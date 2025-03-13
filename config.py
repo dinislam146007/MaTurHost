@@ -10,6 +10,7 @@ class Config:
         self.token_host = os.getenv('API_TOKEN_HOST')
         self.db_user = os.getenv('DB_USER')
         self.db_password = os.getenv('DB_PASSWORD')
+        self.group_id = os.getenv("GROUP_ID")
 
 # Пример использования
 config = Config()

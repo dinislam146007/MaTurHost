@@ -32,6 +32,51 @@ def partner_start():
         [InlineKeyboardButton(text="Информация о акциях", callback_data='action_inf')],
         [InlineKeyboardButton(text="Заказать выплату", callback_data="make_order")],
         [InlineKeyboardButton(text="Мой QR код", callback_data="my_qr_code")],
-        [InlineKeyboardButton(text="Связаться с нами", url="https://t.me/marat_eps")]
+        [InlineKeyboardButton(text="Связаться с нами", url="https://t.me/marat_eps")],
+        [InlineKeyboardButton(text="Админу", callback_data="admin start")]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def close_state(callback):
+    kb = [
+        [InlineKeyboardButton(text="Отмена", callback_data=callback)]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def back_to_menu(callback):
+    kb = [
+        [InlineKeyboardButton(text="Вернуться в меню", callback_data=callback)]
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def verification_inline(user_id):
+    kb = [
+        [
+            InlineKeyboardButton(text="Верифицировать", callback_data=f"ver yes {user_id}"),
+            InlineKeyboardButton(text="Отказать", callback_data=f"ver no {user_id}"),
+
+         ]
+
+    ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def edit_chat_ver(ver):
+    if ver == "yes":
+        kb = [
+            [InlineKeyboardButton(text='Пользователь верифицирован', callback_data="ddd")]
+        ]
+    else:
+        kb = [
+            [InlineKeyboardButton(text='Отказано в верификации', callback_data="ddd")]
+        ]
+    return InlineKeyboardMarkup(inline_keyboard=kb)
+
+def admin_inline():
+    kb = [
+        [InlineKeyboardButton(text="Добавить услугу", callback_data="service_add")],
+        [InlineKeyboardButton(text="Добавить информацию об акциях", callback_data="information_add")],
+        [InlineKeyboardButton(text="Удалить информацию об акциях", callback_data="information_view 1")],
+
+        [InlineKeyboardButton(text="Назад", callback_data="first partner")]
     ]
     return InlineKeyboardMarkup(inline_keyboard=kb)
